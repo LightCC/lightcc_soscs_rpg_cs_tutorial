@@ -34,7 +34,7 @@ namespace WPFUI
 
         private void ButtonBase_OnClick(object sender, RoutedEventArgs e)
         {
-            _gameSession.CurrentPlayer.XP += 10;
+            _gameSession.CurrentPlayer.ExperiencePoints += 10;
         }
 
     }
