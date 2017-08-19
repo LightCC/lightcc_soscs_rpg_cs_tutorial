@@ -2,7 +2,7 @@
 
 namespace Engine.ViewModels
 {
-    class GameSession
+    public class GameSession
     {
         public Player CurrentPlayer { get; set; }
 
@@ -10,7 +10,11 @@ namespace Engine.ViewModels
         {
             CurrentPlayer = new Player();
             CurrentPlayer.Name = "Mike";
-            CurrentPlayer.Gold = 100000;
+            CurrentPlayer.CharacterClass = "Fighter";
+            CurrentPlayer.HP = 10;
+            CurrentPlayer.Gold = 1000000;
+            CurrentPlayer.XP = 0;
+            CurrentPlayer.Level = 1;
         }
     }
 }
