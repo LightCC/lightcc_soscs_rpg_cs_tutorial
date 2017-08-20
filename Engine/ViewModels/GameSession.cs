@@ -40,6 +40,10 @@ namespace Engine.ViewModels
 
             CurrentLocation = CurrentWorld.LocationAt(0, -1);
             CurrentLocation.ImageName = "/Engine;component/Images/Locations/Home.png";
+
+            CurrentPlayer.Inventory.Add(ItemFactory.CreateGameItem(1001));
+            CurrentPlayer.Inventory.Add(ItemFactory.CreateGameItem(1002));
+            CurrentPlayer.Inventory.Add(ItemFactory.CreateGameItem(1001));
         }
 
         public bool HasLocationToNorth
