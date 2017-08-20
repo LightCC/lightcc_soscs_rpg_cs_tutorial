@@ -27,14 +27,14 @@ namespace Engine.ViewModels
         public GameSession()
         {
             CurrentPlayer = new Player
-                            {
-                                Name = "Mike",
-                                CharacterClass = "Fighter",
-                                HitPoints = 10,
-                                Gold = 1000000,
-                                ExperiencePoints = 0,
-                                Level = 1
-                            }
+            {
+                Name = "Mike",
+                CharacterClass = "Fighter",
+                HitPoints = 10,
+                Gold = 1000000,
+                ExperiencePoints = 0,
+                Level = 1
+            };
 
             CurrentWorld = WorldFactory.CreateWorld();
 
