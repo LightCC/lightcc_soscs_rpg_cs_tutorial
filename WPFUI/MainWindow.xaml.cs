@@ -34,22 +34,22 @@ namespace WPFUI
 
         private void OnClick_MoveNorth(object sender, RoutedEventArgs e)
         {
-            _gameSession.MoveNorth();
+            _gameSession.MoveTo(GameSession.Direction.North);
         }
 
         private void OnClick_MoveWest(object sender, RoutedEventArgs e)
         {
-            _gameSession.MoveWest();
+            _gameSession.MoveTo(GameSession.Direction.West);
         }
 
         private void OnClick_MoveEast(object sender, RoutedEventArgs e)
         {
-            _gameSession.MoveEast();
+            _gameSession.MoveTo(GameSession.Direction.East);
         }
 
         private void OnClick_MoveSouth(object sender, RoutedEventArgs e)
         {
-            _gameSession.MoveSouth();
+            _gameSession.MoveTo(GameSession.Direction.South);
         }
 
         //private void ButtonBase_OnClick(object sender, RoutedEventArgs e)

@@ -7,9 +7,17 @@ namespace Engine.ViewModels
     public class GameSession : BaseNotificationClass
     {
         private Location _location;
+        public enum Direction
+        {
+            North = 1,
+            West = 2,
+            East = 3,
+            South = 4,
+        }
 
         public World CurrentWorld { get; set; }
         public Player CurrentPlayer { get; set; }
+
         public Location CurrentLocation
         {
             get { return _location; }
@@ -17,12 +25,18 @@ namespace Engine.ViewModels
             {
                 _location = value;
                 OnPropertyChanged(nameof(CurrentLocation));
+                //OnPropertyChanged(nameof(HasLocation));
                 OnPropertyChanged(nameof(HasLocationToNorth));
                 OnPropertyChanged(nameof(HasLocationToWest));
                 OnPropertyChanged(nameof(HasLocationToEast));
                 OnPropertyChanged(nameof(HasLocationToSouth));
             }
         }
+
+        public bool HasLocationToNorth { get { return HasLocation(Direction.North); } }
+        public bool HasLocationToWest  { get { return HasLocation(Direction.West); } }
+        public bool HasLocationToEast  { get { return HasLocation(Direction.East); } }
+        public bool HasLocationToSouth { get { return HasLocation(Direction.South); } }
 
         public GameSession()
         {
@@ -42,75 +56,79 @@ namespace Engine.ViewModels
             CurrentLocation.ImageName = "/Engine;component/Images/Locations/Home.png";
         }
 
-        public bool HasLocationToNorth
+        public bool HasLocation(int xCoordinate, int yCoordinate)
         {
-            get
+            return (CurrentWorld.LocationAt(xCoordinate, yCoordinate)
+                != null);
+        }
+
+        public bool HasLocation(Direction direction)
+        {
+            switch (direction)
             {
-                return (CurrentWorld.LocationAt(CurrentLocation.XCoordinate,
-                    CurrentLocation.YCoordinate + 1) != null);
+                case Direction.North:
+                    return (CurrentWorld.LocationAt(CurrentLocation.XCoordinate,
+                        CurrentLocation.YCoordinate + 1) != null);
+                case Direction.West:
+                    return (CurrentWorld.LocationAt(CurrentLocation.XCoordinate - 1,
+                        CurrentLocation.YCoordinate) != null);
+                case Direction.East:
+                    return (CurrentWorld.LocationAt(CurrentLocation.XCoordinate + 1,
+                        CurrentLocation.YCoordinate) != null);
+                case Direction.South:
+                    return (CurrentWorld.LocationAt(CurrentLocation.XCoordinate,
+                        CurrentLocation.YCoordinate - 1) != null);
+                default:
+                    throw new System.Exception("System Error: Unhandled or Unknown Direction");
             }
         }
 
-        public bool HasLocationToWest
+        public void MoveTo(int xCoordinate, int yCoordinate)
         {
-            get
+            if (HasLocation(xCoordinate, yCoordinate))
             {
-                return (CurrentWorld.LocationAt(CurrentLocation.XCoordinate - 1,
-                    CurrentLocation.YCoordinate) != null);
+                CurrentLocation = CurrentWorld.LocationAt(xCoordinate, yCoordinate);
+            }
+            else
+            {
+                throw new System.Exception("System Error: Unknown Location in CurrentWorld");
             }
         }
 
-        public bool HasLocationToEast
+        public void MoveTo(Direction direction)
         {
-            get
+            switch (direction)
             {
-                return (CurrentWorld.LocationAt(CurrentLocation.XCoordinate + 1,
-                    CurrentLocation.YCoordinate) != null);
-            }
-        }
-
-        public bool HasLocationToSouth
-        {
-            get
-            {
-                return (CurrentWorld.LocationAt(CurrentLocation.XCoordinate,
-                    CurrentLocation.YCoordinate - 1) != null);
-            }
-        }
-
-        public void MoveNorth()
-        {
-            if (HasLocationToNorth)
-            {
-                CurrentLocation = CurrentWorld.LocationAt(CurrentLocation.XCoordinate,
-                    CurrentLocation.YCoordinate + 1);
-            }
-        }
-
-        public void MoveWest()
-        {
-            if (HasLocationToWest)
-            {
-                CurrentLocation = CurrentWorld.LocationAt(CurrentLocation.XCoordinate - 1,
-                CurrentLocation.YCoordinate);
-            }
-        }
-
-        public void MoveEast()
-        {
-            if (HasLocationToEast)
-            {
-                CurrentLocation = CurrentWorld.LocationAt(CurrentLocation.XCoordinate + 1,
-                CurrentLocation.YCoordinate);
-            }
-        }
-
-        public void MoveSouth()
-        {
-            if (HasLocationToSouth)
-            {
-                CurrentLocation = CurrentWorld.LocationAt(CurrentLocation.XCoordinate,
-                CurrentLocation.YCoordinate - 1);
+                case Direction.North:
+                    if (HasLocation(Direction.North))
+                    {
+                        MoveTo(CurrentLocation.XCoordinate,
+                            CurrentLocation.YCoordinate + 1);
+                    }
+                    break;
+                case Direction.West:
+                    if (HasLocation(Direction.West))
+                    {
+                        MoveTo(CurrentLocation.XCoordinate - 1,
+                            CurrentLocation.YCoordinate);
+                    }
+                    break;
+                case Direction.East:
+                    if (HasLocation(Direction.East))
+                    {
+                        MoveTo(CurrentLocation.XCoordinate + 1,
+                        CurrentLocation.YCoordinate);
+                    }
+                    break;
+                case Direction.South:
+                    if (HasLocation(Direction.South))
+                    {
+                        MoveTo(CurrentLocation.XCoordinate,
+                            CurrentLocation.YCoordinate - 1);
+                    }
+                    break;
+                default:
+                    throw new System.Exception("System Error: Unknown or Unhandled Direction");
             }
         }
 
