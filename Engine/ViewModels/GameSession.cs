@@ -4,7 +4,7 @@ using System.ComponentModel;
 
 namespace Engine.ViewModels
 {
-    public class GameSession : INotifyPropertyChanged
+    public class GameSession : BaseNotificationClass
     {
         private Location _location;
 
@@ -40,13 +40,6 @@ namespace Engine.ViewModels
 
             CurrentLocation = CurrentWorld.LocationAt(0, -1);
             CurrentLocation.ImageName = "/Engine;component/Images/Locations/Home.png";
-        }
-
-        public event PropertyChangedEventHandler PropertyChanged;
-
-        protected virtual void OnPropertyChanged(string propertyName)
-        {
-            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
         }
 
         public bool HasLocationToNorth
