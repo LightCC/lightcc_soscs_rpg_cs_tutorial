@@ -23,7 +23,7 @@ namespace Engine.ViewModels
             WorldFactory factory = new WorldFactory();
             CurrentWorld = factory.CreateWorld();
 
-            CurrentLocation = CurrentWorld.LocationAt(0, -1);
+            CurrentLocation = CurrentWorld.LocationAt(0, 0);
             CurrentLocation.ImageName = "/Engine;component/Images/Locations/Home.png";
         }
     }

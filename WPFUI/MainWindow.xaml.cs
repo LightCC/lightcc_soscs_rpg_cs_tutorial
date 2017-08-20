@@ -35,6 +35,14 @@ namespace WPFUI
         private void ButtonBase_OnClick(object sender, RoutedEventArgs e)
         {
             _gameSession.CurrentPlayer.ExperiencePoints += 10;
+            if (_gameSession.CurrentLocation.YCoordinate == -1)
+            {
+                _gameSession.CurrentLocation = _gameSession.CurrentWorld.LocationAt(0, 0);
+            }
+            else
+            {
+                _gameSession.CurrentLocation = _gameSession.CurrentWorld.LocationAt(0, -1);
+            }
         }
 
     }
