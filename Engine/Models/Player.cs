@@ -17,7 +17,7 @@ namespace Engine.Models
             set
             {
                 _name = value;
-                OnPropertyChanged("Name");
+                OnPropertyChanged(nameof(Name));
             }
         }
 
@@ -27,7 +27,7 @@ namespace Engine.Models
             set
             {
                 _characterClass = value;
-                OnPropertyChanged("CharacterClass");
+                OnPropertyChanged(nameof(CharacterClass));
             }
         }
 
@@ -37,7 +37,7 @@ namespace Engine.Models
             set
             {
                 _hitPoints = value;
-                OnPropertyChanged("HitPoints");
+                OnPropertyChanged(nameof(HitPoints));
             }
         }
 
@@ -47,7 +47,7 @@ namespace Engine.Models
             set
             {
                 _experiencePoints = value;
-                OnPropertyChanged("ExperiencePoints");
+                OnPropertyChanged(nameof(ExperiencePoints));
             }
         }
 
@@ -57,7 +57,7 @@ namespace Engine.Models
             set
             {
                 _level = value;
-                OnPropertyChanged("Level");
+                OnPropertyChanged(nameof(Level));
             }
         }
 
@@ -67,7 +67,7 @@ namespace Engine.Models
             set
             {
                 _gold = value;
-                OnPropertyChanged("Gold");
+                OnPropertyChanged(nameof(Gold));
             }
         }
 
