@@ -1,6 +1,7 @@
 ﻿using Engine.Models;
 using Engine.Factories;
 using System.ComponentModel;
+using System.Linq;
 
 namespace Engine.ViewModels
 {
@@ -21,6 +22,8 @@ namespace Engine.ViewModels
                 OnPropertyChanged(nameof(HasLocationToWest));
                 OnPropertyChanged(nameof(HasLocationToEast));
                 OnPropertyChanged(nameof(HasLocationToSouth));
+
+                GivePlayerQuestsAtLocation();
             }
         }
 
@@ -41,8 +44,11 @@ namespace Engine.ViewModels
             CurrentLocation = CurrentWorld.LocationAt(0, -1);
             CurrentLocation.ImageName = "/Engine;component/Images/Locations/Home.png";
 
-            CurrentPlayer.Inventory.Add(ItemFactory.CreateGameItem(1001));
-            CurrentPlayer.Inventory.Add(ItemFactory.CreateGameItem(1002));
+            CurrentPlayer.Inventory.Add(ItemFactory.CreateGameItem(1001)); // Pointy Stick
+            CurrentPlayer.Inventory.Add(ItemFactory.CreateGameItem(1002)); // Rusty Sword
+
+            // Temporary for test purposes - start game with this quest
+            //CurrentPlayer.Quests.Add(new QuestStatus(QuestFactory.GetQuestByID(1)));
         }
 
         public bool HasLocationToNorth
@@ -114,6 +120,17 @@ namespace Engine.ViewModels
             {
                 CurrentLocation = CurrentWorld.LocationAt(CurrentLocation.XCoordinate,
                 CurrentLocation.YCoordinate - 1);
+            }
+        }
+
+        private void GivePlayerQuestsAtLocation()
+        {
+            foreach (Quest quest in CurrentLocation.QuestsAvailableHere)
+            {
+                if(!CurrentPlayer.Quests.Any(q => q.PlayerQuest.ID == quest.ID))
+                {
+                    CurrentPlayer.Quests.Add(new QuestStatus(quest));
+                }
             }
         }
 
