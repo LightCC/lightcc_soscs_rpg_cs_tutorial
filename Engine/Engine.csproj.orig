@@ -42,7 +42,10 @@
   <ItemGroup>
     <Compile Include="BaseNotificationClass.cs" />
     <Compile Include="Factories\ItemFactory.cs" />
+<<<<<<< HEAD
+=======
     <Compile Include="Factories\MonsterFactory.cs" />
+>>>>>>> lesson-7
     <Compile Include="Factories\QuestFactory.cs" />
     <Compile Include="Factories\WorldFactory.cs" />
     <Compile Include="Models\GameItem.cs" />

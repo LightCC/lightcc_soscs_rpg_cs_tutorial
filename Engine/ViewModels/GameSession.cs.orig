@@ -57,6 +57,16 @@ namespace Engine.ViewModels
 
             CurrentLocation = CurrentWorld.LocationAt(0, -1);
             CurrentLocation.ImageName = "/Engine;component/Images/Locations/Home.png";
+<<<<<<< HEAD
+=======
+
+            CurrentPlayer.Inventory.Add(ItemFactory.CreateGameItem(1001)); // Pointy Stick
+            CurrentPlayer.Inventory.Add(ItemFactory.CreateGameItem(1002)); // Rusty Sword
+
+            // Temporary for test purposes - start game with this quest
+            //CurrentPlayer.Quests.Add(new QuestStatus(QuestFactory.GetQuestByID(1)));
+        }
+>>>>>>> lesson-7
 
             CurrentPlayer.Inventory.Add(ItemFactory.CreateGameItem(1001)); // Pointy Stick
             CurrentPlayer.Inventory.Add(ItemFactory.CreateGameItem(1002)); // Rusty Sword
