@@ -14,16 +14,17 @@ namespace Engine.Factories
 
         static ItemFactory()
         {
-            _standardGameItems = new List<GameItem>();
-
-            _standardGameItems.Add(new Weapon(EItemID.POINTY_STICK, "Pointy Stick", 1, 1, 2));
-            _standardGameItems.Add(new Weapon(EItemID.RUSTY_SWORD, "Rusty Sword", 5, 1, 3));
-            _standardGameItems.Add(new GameItem(EItemID.SNAKE_FANG, "Snake fang", 1));
-            _standardGameItems.Add(new GameItem(EItemID.SNAKESKIN, "Snakeskin", 2));
-            _standardGameItems.Add(new GameItem(EItemID.RAT_TAIL, "Rat tail", 1));
-            _standardGameItems.Add(new GameItem(EItemID.RAT_FUR, "Rat fur", 2));
-            _standardGameItems.Add(new GameItem(EItemID.SPIDER_FANG, "Spider fang", 1));
-            _standardGameItems.Add(new GameItem(EItemID.SPIDER_SILK, "Spider silk", 2));
+            _standardGameItems = new List<GameItem>
+            {
+                new Weapon(EItemID.POINTY_STICK, "Pointy Stick", 1, 1, 2),
+                new Weapon(EItemID.RUSTY_SWORD, "Rusty Sword", 5, 1, 3),
+                new GameItem(EItemID.SNAKE_FANG, "Snake fang", 1),
+                new GameItem(EItemID.SNAKESKIN, "Snakeskin", 2),
+                new GameItem(EItemID.RAT_TAIL, "Rat tail", 1),
+                new GameItem(EItemID.RAT_FUR, "Rat fur", 2),
+                new GameItem(EItemID.SPIDER_FANG, "Spider fang", 1),
+                new GameItem(EItemID.SPIDER_SILK, "Spider silk", 2)
+            };
         }
 
         public static GameItem CreateGameItem(EItemID eItemID)
