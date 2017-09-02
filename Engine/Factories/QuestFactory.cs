@@ -22,13 +22,13 @@ namespace Engine.Factories
 
             // Create the quest
 
-            _quests.Add(new Quest(1,
+            _quests.Add(new Quest(EQuestID.CLEAR_HERB_GARDEN,
                 "Clear the herb garden",
                 "Defeat the snakes in the Herbalists's garden",
                 itemsToComplete, 25, 10, rewardItems));
         }
 
-        internal static Quest GetQuestByID(int id)
+        internal static Quest GetQuestByID(EQuestID id)
         {
             return _quests.FirstOrDefault(quest => quest.ID == id);
         }

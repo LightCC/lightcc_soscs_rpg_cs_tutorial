@@ -6,9 +6,14 @@ using System.Threading.Tasks;
 
 namespace Engine.Models
 {
+    public enum EQuestID
+    {
+        CLEAR_HERB_GARDEN = 1
+    }
+
     public class Quest
     {
-        public int ID { get; set; }
+        public EQuestID ID { get; set; }
         public string Name { get; set; }
         public string Description { get; set; }
 
@@ -18,7 +23,7 @@ namespace Engine.Models
         public int RewardGold { get; set; }
         public List<ItemQuantity> RewardItems { get; set; }
 
-        public Quest(int id, string name, string description,
+        public Quest(EQuestID id, string name, string description,
             List<ItemQuantity> itemsToComplete, int rewardExperiencePoints,
             int rewardGold, List<ItemQuantity> rewardItems)
         {
