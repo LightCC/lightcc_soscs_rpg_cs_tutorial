@@ -5,12 +5,18 @@ namespace Engine.Factories
 {
     public static class MonsterFactory
     {
+        public enum EMonsterID
+        {
+            SNAKE = 1,
+            RAT,
+            GIANT_SPIDER
+        }
 
-        public static Monster GetMonster(int monsterID)
+        public static Monster GetMonster(EMonsterID monsterID)
         {
             switch (monsterID)
             {
-                case 1:
+                case EMonsterID.SNAKE:
                     Monster snake = new Monster("Snake", "Snake.png", 4, 4, 5, 1);
 
                     AddLootItem(snake, EItemID.SNAKE_FANG, 25);
@@ -18,7 +24,7 @@ namespace Engine.Factories
 
                     return snake;
 
-                case 2:
+                case EMonsterID.RAT:
                     Monster rat = new Monster("Rat", "Rat.png", 5, 5, 5, 1);
 
                     AddLootItem(rat, EItemID.RAT_TAIL, 25);
@@ -26,7 +32,7 @@ namespace Engine.Factories
 
                     return rat;
 
-                case 3:
+                case EMonsterID.GIANT_SPIDER:
                     Monster giantSpider =
                         new Monster("Giant Spider", "GiantSpider.png", 10, 10, 10, 3);
 
