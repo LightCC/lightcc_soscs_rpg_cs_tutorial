@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Engine.Factories;
 
 namespace Engine.Factories
 {
@@ -15,9 +16,9 @@ namespace Engine.Factories
         {
             // Declare the items needed to complete the quest, and its rewards
             List<ItemQuantity> itemsToComplete = new List<ItemQuantity>
-                { new ItemQuantity(9001, 5) };
+                { new ItemQuantity(EItemID.SNAKE_FANG, 5) };
             List<ItemQuantity> rewardItems = new List<ItemQuantity>
-                { new ItemQuantity(1002, 1) };
+                { new ItemQuantity(EItemID.RUSTY_SWORD, 1) };
 
             // Create the quest
 

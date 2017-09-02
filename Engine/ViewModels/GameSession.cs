@@ -58,8 +58,8 @@ namespace Engine.ViewModels
             CurrentLocation = CurrentWorld.LocationAt(0, -1);
             CurrentLocation.ImageName = "/Engine;component/Images/Locations/Home.png";
 
-            CurrentPlayer.Inventory.Add(ItemFactory.CreateGameItem(1001)); // Pointy Stick
-            CurrentPlayer.Inventory.Add(ItemFactory.CreateGameItem(1002)); // Rusty Sword
+            CurrentPlayer.Inventory.Add(ItemFactory.CreateGameItem(EItemID.POINTY_STICK));
+            CurrentPlayer.Inventory.Add(ItemFactory.CreateGameItem(EItemID.RUSTY_SWORD));
 
             // Temporary for test purposes - start game with this quest
             //CurrentPlayer.Quests.Add(new QuestStatus(QuestFactory.GetQuestByID(1)));
@@ -139,17 +139,6 @@ namespace Engine.ViewModels
                     break;
                 default:
                     throw new System.Exception("System Error: Unknown or Unhandled Direction");
-            }
-        }
-
-        private void GivePlayerQuestsAtLocation()
-        {
-            foreach (Quest quest in CurrentLocation.QuestsAvailableHere)
-            {
-                if(!CurrentPlayer.Quests.Any(q => q.PlayerQuest.ID == quest.ID))
-                {
-                    CurrentPlayer.Quests.Add(new QuestStatus(quest));
-                }
             }
         }
 

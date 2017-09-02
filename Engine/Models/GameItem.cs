@@ -6,13 +6,25 @@ using System.Threading.Tasks;
 
 namespace Engine.Models
 {
+    public enum EItemID
+    {
+        POINTY_STICK = 1001,
+        RUSTY_SWORD = 1002,
+        SNAKE_FANG = 9001,
+        SNAKESKIN = 9002,
+        RAT_TAIL = 9003,
+        RAT_FUR = 9004,
+        SPIDER_FANG = 9005,
+        SPIDER_SILK = 9006
+    }
+
     public class GameItem
     {
-        public int ItemTypeID { get; set; }
+        public EItemID ItemTypeID { get; set; }
         public string Name { get; set; }
         public int Price { get; set; }
 
-        public GameItem(int itemTypeID, string name, int price)
+        public GameItem(EItemID itemTypeID, string name, int price)
         {
             ItemTypeID = itemTypeID;
             Name = name;
